@@ -23,3 +23,7 @@ puts "James"
 puts "Giacomo"
 puts "Nisar"
 puts "Peter"
+
+print "Overall, we have "
+print 23
+puts " great students"
