@@ -1,28 +1,28 @@
 # let's put all the students into an array
 students = [
-	"Kennerdeigh",
-	"Anath",
-	"Jean-Baptiste",
-	"Erica",
-	"Georgi",
-	"Nicki",
-	"Chris",
-	"Kumy",
-	"Lara",
-	"James",
-	"Asta",
-	"Hannah",
-	"Simon",
-	"Gianni",
-	"Tom Groombridge",
-	"Tom Shacham ",
-	"Jeremy",
-	"Michael",
-	"Bruce",
-	"James",
-	"Giacomo",
-	"Nisar",
-	"Peter"
+	["Kennerdeigh", :november],
+	["Anath", :november],
+	["Jean-Baptiste", :november],
+	["Erica", :november],
+	["Georgi", :november],
+	["Nicki", :november],
+	["Chris", :november],
+	["Kumy", :november],
+	["Lara", :november],
+	["James", :november],
+	["Asta", :november],
+	["Hannah", :novemebr],
+	["Simon", :november],
+	["Gianni", :november],
+	["Tom Groombridge", :november],
+	["Tom Shacham ", :november],
+	["Jeremy", :november],
+	["Michael", :november],
+	["Bruce", :november],
+	["James", :november],
+	["Giacomo", :november],
+	["Nisar", :november],
+	["Peter", :november],
 ]
 
 # and then print them
@@ -31,9 +31,9 @@ def print_header
 	puts "---------------------"
 end
 
-def print(names)
-	names.each do |name|
-	puts name
+def print(students)
+	students.each do |student|
+	puts "#{student[0]} (#{student[1]} cohort)"
 end
 end
 
