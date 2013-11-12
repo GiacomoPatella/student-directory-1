@@ -1,28 +1,28 @@
 # let's put all the students into an array
 students = [
-	["Kennerdeigh", :november],
-	["Anath", :november],
-	["Jean-Baptiste", :november],
-	["Erica", :november],
-	["Georgi", :november],
-	["Nicki", :november],
-	["Chris", :november],
-	["Kumy", :november],
-	["Lara", :november],
-	["James", :november],
-	["Asta", :november],
-	["Hannah", :novemebr],
-	["Simon", :november],
-	["Gianni", :november],
-	["Tom Groombridge", :november],
-	["Tom Shacham ", :november],
-	["Jeremy", :november],
-	["Michael", :november],
-	["Bruce", :november],
-	["James", :november],
-	["Giacomo", :november],
-	["Nisar", :november],
-	["Peter", :november],
+	{:name => "Kennerdeigh", :cohort => :november},
+	{:name => "Anath", :cohort => :november},
+	{:name => "Jean-Baptiste", :cohort => :november},
+	{:name => "Erica", :cohort => :november},
+	{:name => "Georgi", :cohort => :november},
+	{:name => "Nicki", :cohort => :november},
+	{:name => "Chris", :cohort => :november},
+	{:name => "Kumy", :cohort => :november},
+	{:name => "Lara", :cohort => :november},
+	{:name => "James", :cohort => :november},
+	{:name => "Asta", :cohort => :november},
+	{:name => "Hannah", :cohort => :novemebr},
+	{:name => "Simon", :cohort => :november},
+	{:name => "Gianni", :cohort => :november},
+	{:name => "Tom Groombridge", :cohort => :november},
+	{:name => "Tom Shacham ", :cohort => :november},
+	{:name => "Jeremy", :cohort => :november},
+	{:name => "Michael", :cohort => :november},
+	{:name => "Bruce", :cohort => :november},
+	{:name => "James", :cohort => :november},
+	{:name => "Giacomo", :cohort => :november},
+	{:name => "Nisar", :cohort => :november},
+	{:name => "Peter", :cohort => :november},
 ]
 
 # and then print them
@@ -33,7 +33,7 @@ end
 
 def print(students)
 	students.each do |student|
-	puts "#{student[0]} (#{student[1]} cohort)"
+	puts "#{student[:name]} (#{student[:cohort]} cohort)"
 end
 end
 
