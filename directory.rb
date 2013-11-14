@@ -1,44 +1,60 @@
 #!/usr/bin/env ruby
 # Student names & cohort data hashes
 def input_students
-	puts "Please enter the names of the students"
-	puts "To finish,just hit return twice"
 	# create an empty array
 	students = []
 	# get the first name
-	name = gets.chomp
-	# while the name is not empty, repeat this code
-	while !name.empty? do
-		#add the student hash to the array
-		students << { :name => name, :cohort => :november}
-		puts "Now we have #{students.length} students"
-		#get another name from the user
+	loop do
+		puts "Please enter the name of the student you'd like to add and push return, ".center(150)
+		puts "or hit enter twice to finish".center(150)
 		name = gets.chomp
+		break if name.empty?
+		puts "Please enter the cohort month of the student"
+		# get the cohort
+		cohort = gets.chomp
+		break if cohort.empty?
+		# while the cohort is not empty, repeat this code
+		#add the student hash to the array
+		students << { :name => capitalize_all(name), :cohort => cohort.capitalize}
 	end
 	#return the array of students
 	students
 end
 
-# To print...
-def print_header
-	puts "The students of my cohort at Makers Academy"
-	puts "---------------------"
+def capitalize_all(string)
+	string.split(' ').map{|word| word.capitalize}.join(' ')
 end
 
-def print(students)
-	students.each do |student|
-	puts "#{student[:name]} (#{student[:cohort]} cohort)"
+# To print...
+def print_header
+	puts "The students of my cohort at Makers Academy".center(150)
+	puts "---------------------".center(150)
 end
+
+def display(students)
+	puts "Names Beginning with 'A'\n===========================".center(150) if students.any? {|student| student[:name][0] == 'A'}
+	students.each_with_index do |student, i|
+		if student[:name][0] == "A" 
+			puts "#{i+1}: #{student[:name]} (#{student[:cohort]} cohort)".center(150)
+		end
+	end
+	puts "Names Not Beginning with 'A'\n===========================".center(150) if students.any? {|student| student[:name][0] != 'A'}
+	students.each_with_index do |student, i|
+		if student[:name][0] != "A" 
+			puts "#{i+1}: #{student[:name]} (#{student[:cohort]} cohort)".center(150)
+		end
+	end
+
 end
 
 def print_footer(names)
-	puts "Overall, we have #{names.length} great students"
+	puts "Overall, we have #{names.length} great students".center(150)
 end
 
 # nothing happens until we call the methods
 
 students = input_students
 print_header
-print(students)
+display(students)
 print_footer(students)
 
