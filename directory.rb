@@ -41,13 +41,13 @@ def display(students)
 	puts "Names beginning with 'A'".center(150) + "\n" + "========================".center(150) if students.any? {|student| student[:name][0] == 'A'}
 	students.each_with_index do |student, i|
 		if student[:name][0] == "A" 
-			puts "#{i+1}: #{student[:name]} (#{student[:cohort]} Cohort\n)".center(150)
+			puts "#{i+1}: #{student[:name]} (#{student[:cohort]} Cohort)".center(150)
 		end
 	end
 	puts "Names not beginning with 'A'".center(150) + "\n" + "========================".center(150) if students.any? {|student| student[:name][0] != 'A'}
 	students.each_with_index do |student, i|
 		if student[:name][0] != "A" 
-			puts "#{i+1}: #{student[:name]} (#{student[:cohort]} Cohort\n)".center(150)
+			puts "#{i+1}: #{student[:name]} (#{student[:cohort]} Cohort)".center(150)
 		end
 	end
 
