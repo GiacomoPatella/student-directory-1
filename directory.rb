@@ -1,29 +1,29 @@
 #!/usr/bin/env ruby
 # Student names & cohort data hashes
+def greeting()
+	puts "Please enter the name of the student you'd like to add and push return, ".center(150)
+	puts "or hit enter twice to finish".center(150)
+	end
+
+	def get_information(info)
+		p "Please enter " + info
+		gets.chomp
+	end
+
 def input_students
 	# create an empty array
 	students = []
 	# get the first name
 	loop do
-		puts "Please enter the name of the student you'd like to add and push return, ".center(150)
-		puts "or hit enter twice to finish".center(150)
-		name = gets.chomp
+		greeting
+		name = get_information("name")
 		break if name.empty?
-		puts "Please enter the cohort month of the student"
-		# get the cohort
-		cohort = gets.chomp
-		# while the cohort is not empty, repeat this code
-		# get hobbies
+	  cohort = get_information("cohort")
 		break if cohort.empty?
-		puts "Please enter your favourite pastimes"
-		#get the hobies from the user
-		hobbies = gets.chomp
-		break if hobbies.empty?
-		# while the cohort is not empty, repeat this code
-		#add the student hash to the array
-		students << { :name => capitalize_all(name), :cohort => cohort.capitalize, :hobbies => hobbies}
+		pastimes = get_information("pastimes")
+		break if pastimes.empty?
+		students << { :name => capitalize_all(name), :cohort => capitalize_all(name), :hobbies => capitalize_all(name)}
 	end
-	#return the array of students
 	students
 end
 
@@ -58,7 +58,6 @@ def print_footer(names)
 end
 
 # nothing happens until we call the methods
-
 students = input_students
 print_header
 display(students)
