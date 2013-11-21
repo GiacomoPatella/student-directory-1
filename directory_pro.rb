@@ -27,7 +27,7 @@ end
 
 def show_students
   print_header
-  display
+  display_student_list
   print_footer
 end 
 
@@ -65,7 +65,7 @@ def print_header
   puts "---------------------".center(150)
 end
 
-def display
+def display_student_list
   puts "Names beginning with 'A'".center(150) + "\n" + "========================".center(150) if @students.any? {|student| student[:name][0] == 'A'}
   @students.each_with_index do |student, i|
     if student[:name][0] == "A" 
