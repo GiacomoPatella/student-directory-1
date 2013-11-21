@@ -27,8 +27,8 @@ end
 
 def show_students
   print_header
-  display(@students)
-  print_footer(@students)
+  display
+  print_footer
 end 
 
 
@@ -38,7 +38,7 @@ def greeting()
 end
 
 def get_information(info)
-  p "Please enter " + info
+  puts "Please enter " + info
   gets.chomp
 end
 
@@ -65,23 +65,23 @@ def print_header
   puts "---------------------".center(150)
 end
 
-def display(students)
-  puts "Names beginning with 'A'".center(150) + "\n" + "========================".center(150) if students.any? {|student| student[:name][0] == 'A'}
-  students.each_with_index do |student, i|
+def display
+  puts "Names beginning with 'A'".center(150) + "\n" + "========================".center(150) if @students.any? {|student| student[:name][0] == 'A'}
+  @students.each_with_index do |student, i|
     if student[:name][0] == "A" 
       puts "#{i+1}: #{student[:name]} (#{student[:cohort]} Cohort)".center(150)
     end
   end
-  puts "Names not beginning with 'A'".center(150) + "\n" + "========================".center(150) if students.any? {|student| student[:name][0] != 'A'}
-  students.each_with_index do |student, i|
+  puts "Names not beginning with 'A'".center(150) + "\n" + "========================".center(150) if @students.any? {|student| student[:name][0] != 'A'}
+  @students.each_with_index do |student, i|
     if student[:name][0] != "A" 
       puts "#{i+1}: #{student[:name]} (#{student[:cohort]} Cohort)".center(150)
     end
   end
 end
 
-def print_footer(names)
-  puts "Overall, we have #{names.length} great students".center(150)
+def print_footer
+  puts "Overall, we have #{@students.length} great students".center(150)
 end
 
 # nothing happens until we call the methods
