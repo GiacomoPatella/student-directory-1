@@ -1,29 +1,35 @@
-#!/usr/bin/env ruby
+  @students = [] # an empty array accessible to all methods
 def interactive_menu
-  students = []
   loop do
-    # 1. print the menu and ask the user what to do 
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "9. Exit"
-    # 2. read the input and save it into a variable
-    selection = gets.chomp
-    # 3. do what the user has asked
-    case selection
-    when "1"
-      students = input_students
-    when "2"
-      print_header
-      display(students)
-      print_footer(students)
-    when "9"
-      exit 
-    else
-      puts "I don't know what you meant. Please try again."
-    end
+    print_menu 
+    process(gets.chomp)
+  end
+end
+  
+def process(selection)
+  case selection
+  when "1"
+    input_students
+  when "2"
+    show_students
+  when "9"
+    exit 
+  else
+    puts "I don't know what you meant. Please try again."
   end
 end
 
+def print_menu
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit"
+end
+
+def show_students
+  print_header
+  display(@students)
+  print_footer(@students)
+end 
 
 
 def greeting()
@@ -37,7 +43,6 @@ def get_information(info)
 end
 
 def input_students
-  students = []
   loop do
     greeting
     name = get_information("name")
@@ -46,9 +51,9 @@ def input_students
     break if cohort.empty?
     pastimes = get_information("pastimes")
     break if pastimes.empty?
-    students << { :name => capitalize_all(name), :cohort => capitalize_all(cohort), :hobbies => capitalize_all(pastimes)}
+    @students << { :name => capitalize_all(name), :cohort => capitalize_all(cohort), :hobbies => capitalize_all(pastimes)}
   end
-  students
+  @students
 end
 
 def capitalize_all(string)
