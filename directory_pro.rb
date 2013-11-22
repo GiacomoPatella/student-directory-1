@@ -1,9 +1,15 @@
-  @students = [] # an empty array accessible to all methods
+
+
+@students = [] # an empty array accessible to all methods
+
+def try_load_students
+  load_students
+end
+
 
 def save_students
   #open the file for writing
   file = File.open("students.csv", "w")
-  #iterate over the array of students
   puts "SAVED: #{@students}"
   @students.each do |student|
     student_data = [student[:name], student[:cohort], student[:hobbies]]
@@ -13,7 +19,29 @@ def save_students
   file.close
 end
 
+def load_students(filename = "students.csv")
+  #open the file for reading
+  file = File.open(filename, "r")
+  file.readlines.each do |line|
+    name, cohort, pastimes = line.chomp.split(",")
+    @students << {:name => name, :cohort => cohort, :hobbies => pastimes}
+  end
+end
+
+def try_load_students
+  filename = ARGV.first
+  return if filename.nil?
+  if File.exists?(filename)
+    load_students(filename)
+    puts "Loaded #{@students.length} from #{filename}"
+  else
+    puts "Sorry, #{filename} doesn't exist."
+    exit
+  end
+end
+
 def interactive_menu
+  try_load_students
   loop do
     print_menu 
     process(gets.chomp)
@@ -24,9 +52,10 @@ def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
   puts "3. Save the list to students.csv"
+  puts "4. Load the list from students.csv"
   puts "9. Exit"
 end
-
+ 
 def process(selection)
   case selection
   when "1"
@@ -35,6 +64,8 @@ def process(selection)
     show_students
   when "3"
     save_students
+  when "4"
+    load_students("students.csv")
   when "9"
     exit 
   else
@@ -69,7 +100,7 @@ end
 
 def get_information(studentinfo)
   puts "Please enter " + studentinfo
-  gets.chomp
+  STDIN.gets.chomp
 end
 
 def print_header
@@ -106,5 +137,7 @@ end
 
 # nothing happens until we call the methods
 interactive_menu
+load_students(filename)
+try_load_students
 
 
